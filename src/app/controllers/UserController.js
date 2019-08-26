@@ -64,7 +64,7 @@ class UserController {
 
     if (email !== user.email) {
       // verificando se existe email ja cadastrado
-      const userExists = await User.findOne({
+      const userExists = await user.findOne({
         where: { email },
       });
 
@@ -79,7 +79,7 @@ class UserController {
     }
 
     // Alterando o usuário na base
-    const { id, name, provider } = await User.update(req.body);
+    const { id, name, provider } = await user.update(req.body);
 
     return res.json({
       id,
