@@ -14,11 +14,10 @@ export default async (req, res, next) => {
   const [, token] = authHeader.split(' ');
 
   try {
-    // TODO verificar como esta sendo feito esse método promissify, pois está gerando erro
     const decoded = await promisify(jwt.verify)(token, authConfig.secret);
 
     // Incluir id do usuário nas requisições depois de decodificar
-    req.userId = decoded.id;
+    req.userID = decoded.id;
 
     return next();
   } catch (err) {
