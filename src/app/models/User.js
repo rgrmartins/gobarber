@@ -26,6 +26,11 @@ class User extends Model {
     return this;
   }
 
+  // Associando o File com o User
+  static associate(models) {
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
+  }
+
   // checando se a senha enviada bate com a criptografada no banco
   // por não ser uma regra de negócio não tem problema ficar aqui no model
   checkPassword(password) {
