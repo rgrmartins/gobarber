@@ -6,6 +6,9 @@ import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
 import ProviderController from './app/controllers/ProviderController';
+import AppointmentController from './app/controllers/AppointmentController';
+import ScheduleController from './app/controllers/ScheduleController';
+import NotificationController from './app/controllers/NotificationController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -26,7 +29,17 @@ routes.put('/users', UserController.update);
 // Rota para listar os usuários (Providers)
 routes.get('/provider', ProviderController.index);
 
+// Rota para Agendamento
+routes.post('/appointments', AppointmentController.store);
+routes.get('/appointments', AppointmentController.index);
+
+// Rota para listar Agendamento do prestador de serviço
+routes.get('/schedule', ScheduleController.index);
+
 // Rota de Upload de arquivos
 routes.post('/files', upload.single('file'), FileController.store);
+
+// Rota de carregamento de notificações do provider
+routes.get('/notifications', NotificationController.index);
 
 export default routes;
