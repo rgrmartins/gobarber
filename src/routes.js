@@ -9,6 +9,7 @@ import ProviderController from './app/controllers/ProviderController';
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
 import NotificationController from './app/controllers/NotificationController';
+import AvailableController from './app/controllers/AvailableController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -28,6 +29,8 @@ routes.put('/users', UserController.update);
 
 // Rota para listar os usuários (Providers)
 routes.get('/provider', ProviderController.index);
+// Rota para listar os horários disponíveis de um provider
+routes.get('/providers/:providerId/available', AvailableController.index);
 
 // Rota para Agendamento
 routes.post('/appointments', AppointmentController.store);
